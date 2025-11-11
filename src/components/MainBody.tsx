@@ -14,7 +14,7 @@ const MainGrid = () => {
       <SimpleGrid
         columns={{ sm: 1, md: 2, lg: 3, xl: 5 }}
         padding="10px"
-        spacing={4}
+        spacing={3}
       >
         {isLoading &&
           Skeletons.map((skeleton) => (
