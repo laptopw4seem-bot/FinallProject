@@ -1,5 +1,5 @@
 // this one to publish the data
-import { CanceledError } from "axios";
+import { AxiosRequestConfig, CanceledError } from "axios";
 import { useEffect, useState } from "react";
 import apiClient from "../services/api-client";
 
@@ -9,7 +9,7 @@ interface fetchResponse<T> {
     results: T[];
 
 }
-const useingData = <T>(endpoint:string) => {
+const useingData = <T>(endpoint:string , deps? :any[] ,requestConfig?:AxiosRequestConfig ) => {
   const [dataa, setingData] = useState<T[]>([]); // store data here
   const [error, setError] = useState("");
   const [isLoading, setLoading] = useState(false);
@@ -17,7 +17,7 @@ const useingData = <T>(endpoint:string) => {
     const controller = new AbortController();
     setLoading(true);
     apiClient
-      .get<fetchResponse<T>>(endpoint, { signal: controller.signal })
+      .get<fetchResponse<T>>(endpoint, { signal: controller.signal , ...requestConfig})
       .then((res) => {
         setingData(res.data.results);
         setLoading(false);
@@ -28,7 +28,7 @@ const useingData = <T>(endpoint:string) => {
         setLoading(false);
       });
     return () => controller.abort();
-  }, []);
+  }, deps ? [...deps]: []);
   return { dataa, error, isLoading };};
 
 export default useingData;
