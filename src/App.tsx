@@ -4,6 +4,7 @@ import MainBody from "./components/MainBody";
 import GenreList from "./components/GenreList";
 import { useState } from "react";
 import { Genre } from "./hooks/useGenres";
+import PlatFormSelecter from "./components/platFormSelecter";
 function App() {
   const [selectedGenre, setSelectedGenre] = useState<Genre | null>(null);
 
@@ -28,6 +29,7 @@ function App() {
         />
       </GridItem>
       <GridItem area="main">
+        <PlatFormSelecter />
         <MainBody SelectGenre={selectedGenre} />
       </GridItem>
     </Grid>
