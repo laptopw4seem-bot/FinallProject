@@ -3,7 +3,7 @@ import useData, { Game, Platform } from "../hooks/useData";
 import DataCard from "./dataCard";
 import GameCardSkltn from "./gameCardSkltn";
 import GameCardCont from "./gameCardCont";
-import { Genre } from "../hooks/useGenres";
+// import { Genre } from "../hooks/useGenres";
 import { GameQuery } from "../App";
 interface Props {
   gameQuery: GameQuery;
