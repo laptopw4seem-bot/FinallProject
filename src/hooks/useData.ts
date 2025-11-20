@@ -40,7 +40,7 @@ const useData = (gameQuery: GameQuery) =>
   useingData<Game>(
     "/games",
     [gameQuery], // deps array (second argument)
-    { params: { genres: gameQuery.genre?.id, platforms: gameQuery.platform?.id , ordering :gameQuery.sortOrder } } // axios config (third)
+    { params: { genres: gameQuery.genre?.id, platforms: gameQuery.platform?.id , ordering :gameQuery.sortOrder ,search:gameQuery.searchText } } // axios config (third)
   );
 
 export default useData;
